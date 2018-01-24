@@ -82,7 +82,7 @@ em {
             color: $blk;
         }
         
-        &:hover, &:focus {
+        &:hover {
             outline: 0;
             cursor: pointer;
             mix-blend-mode: multiply;
@@ -112,6 +112,9 @@ em {
                 opacity: .9;
             }
         }
+        &:focus {
+            outline: 0;
+        }
     }
     
     nav {
@@ -136,9 +139,15 @@ em {
                         font-family: $arvo;
                         font-size: 1.25em;
                         border-bottom: 2px solid #fff;
+                        text-decoration: none;
+                        
+                        i {
+                            margin-left: .5em;
+                        }
                         
                         &:hover, &:focus {
                             background-color: $blk;
+                            color: $lime;
                         }
                     }
                 }
@@ -185,6 +194,7 @@ section {
 header {
     section {
         > p {
+            font-size: 1.25em;
             line-height: 1.5;
             margin: 0 0 1em;
         }
@@ -247,6 +257,7 @@ main {
         // padding-left: 3.5em;
     
         > p {
+            font-size: 1.25em;
             line-height: 1.5;
             margin: 0 0 1em;
             
@@ -270,7 +281,7 @@ main {
 
 .text {
     > p {
-        font-size: 2em;
+        font-size: 1.75rem;
         line-height: 1.5;
     }
 }
@@ -359,6 +370,7 @@ main {
                 box-shadow: 0px 1px 2em 5px rgba(0,0,0,.1);
                     
                 .title {
+                    font-size: .9rem;
                     padding: 1em;
                     background-color: #999;
                     text-align: left;
@@ -417,7 +429,7 @@ main {
                     
                     p {
                         text-align: left;
-                        line-height: 1.25;
+                        line-height: 1.5;
                     }
                     
                     .foot {
@@ -464,6 +476,7 @@ main {
                     
                     .card {
                         .title {
+                            font-size: 1rem;
                             &:before {
                                 content: '\f10c';
                                 font-family: 'fontawesome';
@@ -625,6 +638,7 @@ footer {
                 
                 &:first-of-type {
                     margin-right: 3em;
+                    padding-bottom: 1em;
                 }
             }
         }
@@ -655,6 +669,12 @@ footer {
                 @include flex-display;
                 @include flex-justify-between;
                 @include flex-items-center;
+                
+                ul {
+                    &:first-of-type {
+                        padding: 0;
+                    }
+                }
             }
         }
     }
@@ -681,7 +701,7 @@ footer {
         border-bottom: 1px dotted $jet;
     }
     .list {
-        padding: 1em 2em;
+        padding: 1em 2em 3em;
         
         li {
             a {

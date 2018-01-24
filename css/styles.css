@@ -112,13 +112,13 @@ em {
     font-size: 2rem; }
     .nav-wrap button i {
       color: #1E1E24; }
-    .nav-wrap button:hover, .nav-wrap button:focus {
+    .nav-wrap button:hover {
       outline: 0;
       cursor: pointer;
       mix-blend-mode: multiply; }
-      .nav-wrap button:hover i, .nav-wrap button:focus i {
+      .nav-wrap button:hover i {
         color: #ffff00; }
-      .nav-wrap button:hover:before, .nav-wrap button:focus:before {
+      .nav-wrap button:hover:before {
         content: '\f0c9';
         font-family: 'fontawesome';
         position: absolute;
@@ -127,7 +127,7 @@ em {
         color: #ff00ff;
         mix-blend-mode: multiply;
         opacity: .9; }
-      .nav-wrap button:hover:after, .nav-wrap button:focus:after {
+      .nav-wrap button:hover:after {
         content: '\f0c9';
         font-family: 'fontawesome';
         position: absolute;
@@ -136,6 +136,8 @@ em {
         color: #00ffff;
         mix-blend-mode: multiply;
         opacity: .9; }
+    .nav-wrap button:focus {
+      outline: 0; }
   .nav-wrap nav {
     display: none;
     background-color: #353535; }
@@ -153,9 +155,13 @@ em {
         text-align: right;
         font-family: "Arvo", serif;
         font-size: 1.25em;
-        border-bottom: 2px solid #fff; }
+        border-bottom: 2px solid #fff;
+        text-decoration: none; }
+        .nav-wrap nav.open ul li a i {
+          margin-left: .5em; }
         .nav-wrap nav.open ul li a:hover, .nav-wrap nav.open ul li a:focus {
-          background-color: #1E1E24; }
+          background-color: #1E1E24;
+          color: #72DD0D; }
 
 .logo {
   background-color: #fff;
@@ -186,6 +192,7 @@ section > h2 {
   font-size: 1.25rem; }
 
 header section > p {
+  font-size: 1.25em;
   line-height: 1.5;
   margin: 0 0 1em; }
 
@@ -244,6 +251,7 @@ header section > p {
 main section {
   position: relative; }
   main section > p {
+    font-size: 1.25em;
     line-height: 1.5;
     margin: 0 0 1em; }
     main section > p a {
@@ -255,7 +263,7 @@ main section {
         color: #1E1E24; }
 
 .text > p {
-  font-size: 2em;
+  font-size: 1.75rem;
   line-height: 1.5; }
 
 .example {
@@ -353,6 +361,7 @@ main section {
       #timeline > ul > li .card {
         box-shadow: 0px 1px 2em 5px rgba(0, 0, 0, 0.1); }
         #timeline > ul > li .card .title {
+          font-size: .9rem;
           padding: 1em;
           background-color: #999;
           text-align: left;
@@ -404,7 +413,7 @@ main section {
           padding: 1em; }
           #timeline > ul > li .card .body p {
             text-align: left;
-            line-height: 1.25; }
+            line-height: 1.5; }
           #timeline > ul > li .card .body .foot {
             border-top: 1px solid #ccc;
             margin-top: 1em;
@@ -438,13 +447,15 @@ main section {
           padding: 3em; }
           #timeline > ul > li:nth-of-type(odd) {
             text-align: right; }
-            #timeline > ul > li:nth-of-type(odd) .card .title:before {
-              content: '\f10c';
-              font-family: 'fontawesome';
-              left: calc(100% + 2.2em); }
-            #timeline > ul > li:nth-of-type(odd) .card .title:after {
-              content: '\f0da';
-              left: 100%; }
+            #timeline > ul > li:nth-of-type(odd) .card .title {
+              font-size: 1rem; }
+              #timeline > ul > li:nth-of-type(odd) .card .title:before {
+                content: '\f10c';
+                font-family: 'fontawesome';
+                left: calc(100% + 2.2em); }
+              #timeline > ul > li:nth-of-type(odd) .card .title:after {
+                content: '\f0da';
+                left: 100%; }
           #timeline > ul > li:nth-of-type(even) {
             top: 10em; }
             #timeline > ul > li:nth-of-type(even) .card .title:before {
@@ -603,7 +614,8 @@ footer {
         -ms-flex-direction: column;
         flex-direction: column; }
         footer > div .footerMeta ul:first-of-type {
-          margin-right: 3em; }
+          margin-right: 3em;
+          padding-bottom: 1em; }
   footer h3 {
     font-family: "Arvo", serif;
     font-size: .8em;
@@ -633,7 +645,9 @@ footer {
       -moz-box-align: center;
       -webkit-align-items: center;
       -ms-flex-align: center;
-      align-items: center; } }
+      align-items: center; }
+      footer > div .footerMeta ul:first-of-type {
+        padding: 0; } }
   @media (min-width: 780px) {
     footer > div .footerMeta ul {
       -webkit-box-direction: normal;
@@ -658,7 +672,7 @@ footer {
   font-weight: 700;
   border-bottom: 1px dotted #353535; }
 #design .list {
-  padding: 1em 2em; }
+  padding: 1em 2em 3em; }
   #design .list li a {
     display: inline-block;
     padding: .5em 0 0;

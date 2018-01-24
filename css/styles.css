@@ -420,6 +420,8 @@ main section {
             padding-top: 1em; }
             #timeline > ul > li .card .body .foot ul li button {
               width: 80px; }
+            #timeline > ul > li .card .body .foot h4 {
+              text-align: right; }
   #timeline:after {
     content: '';
     background-color: #ccc;

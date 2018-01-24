@@ -16,6 +16,8 @@ $blue-dk: #031927;
 $silver: #7B787A;
 $smoke: #F6F5F6;
 $lime: #72DD0D;
+$red-dk: #5F261E;
+$jet: #353535;
 
 body, a, h3, nav ul li:after {
     transition: width 0.2s, height 0.2s, top 0.2s, left 0.2s, bottom 0.2s, right 0.2s, opacity 0.2s, background 0.2s, color 0.2s, display 0.2s, border-bottom 0.2s, padding-top 0.2s, padding-bottom 0.2s, margin-top 0.2s, margin-bottom 0.2s;
@@ -29,13 +31,123 @@ body, html {
   font-size: 12px;
 }
 
+em {
+    font-style: italic;
+}
+
 #page {
     color: $blk;
 }
 
+.nav-wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 2.75rem;
+    z-index: 99;
+    background-color: $smoke;
+    border-bottom: 2px solid #ccc;
+    
+    > div {
+        padding: .2rem 1rem;
+        @include flex-display;
+        @include flex-justify-start;
+        @include flex-items-center;
+        opacity: 0;
+        
+        a {
+            height: 25px;
+            width: 25px;
+        }
+        
+        h1 {
+            font-family: $arvo;
+            font-weight: 700;
+            margin-left: 1rem;
+            font-size: 1.5rem;
+            color: #333;
+        }
+    }
+    
+    button {
+        position: absolute;
+        right: 1rem;
+        top: .05rem;
+        background: transparent;
+        border: 0;
+        font-size: 2rem;
+        
+        i {
+            color: $blk;
+        }
+        
+        &:hover, &:focus {
+            outline: 0;
+            cursor: pointer;
+            mix-blend-mode: multiply;
+            
+            i {
+                color: #ffff00;
+            }
+            
+            &:before {
+                content:'\f0c9';
+                font-family: 'fontawesome';
+                position: absolute;
+                top: 2px;
+                left: 4px;
+                color: #ff00ff;
+                mix-blend-mode: multiply;
+                opacity: .9;
+            }
+            &:after {
+                content:'\f0c9';
+                font-family: 'fontawesome';
+                position: absolute;
+                left: 2px;
+                top: 3px;
+                color: #00ffff;
+                mix-blend-mode: multiply;
+                opacity: .9;
+            }
+        }
+    }
+    
+    nav {
+        display: none;
+        background-color: $jet;
+        
+        &.open {
+            display: block;
+            position: absolute;
+            right:0;
+            top: 30px;
+            width: 200px;
+            opacity: .8;
+            
+            ul {
+                li {
+                    a {
+                        color: #fff;
+                        padding: 1em;
+                        display: block;
+                        text-align: right;
+                        font-family: $arvo;
+                        font-size: 1.25em;
+                        border-bottom: 2px solid #fff;
+                        
+                        &:hover, &:focus {
+                            background-color: $blk;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 .logo {
-    width: 48px;
-    height: 48px;
     background-color: #fff;
     border-radius: 5px;
     display: flex;
@@ -59,48 +171,101 @@ body, html {
     padding: 1em;
 }
 
+section {
+    > h2 {
+        text-transform: uppercase;
+        border-bottom: 1px solid #666;
+        padding-bottom: .25em;
+        margin: 3em 0 1em;
+        font-family: $arvo;
+        font-size: 1.25rem;
+    }
+}
+
 header {
+    section {
+        > p {
+            line-height: 1.5;
+            margin: 0 0 1em;
+        }
+    }
+}
+
+.heading {
+    padding-top: 3em;
     
+    .logo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    h1 {
+        font-family: arvo;
+        font-weight: 700;
+        font-size: 3rem;
+        mix-blend-mode: multiply;
+        position: relative;
+        color: #ffff00;
+        opacity: .9;
+        
+        &:before {
+            content:'Michael Johnson';
+            position: absolute;
+            top: 1px;
+            left: -2px;
+            color: #ff00ff;
+            mix-blend-mode: multiply;
+            opacity: .9;
+        }
+        &:after {
+            content:'Michael Johnson';
+            position: absolute;
+            left: -1px;
+            top: 2px;
+            color: #00ffff;
+            mix-blend-mode: multiply;
+            opacity: .9;
+        }
+    }
+    
+    @include breakpoint($small-break) {
+        @include flex-display;
+        @include flex-justify-start;
+        @include flex-items-center;
+    }
+}
+
+#intro {
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px dotted #999;
 }
 
 main {
     section {
         position: relative;
-        padding-left: 3.5em;
+        // padding-left: 3.5em;
     
         > p {
             line-height: 1.5;
             margin: 0 0 1em;
-        }
-        
-        > h2 {
-            text-transform: uppercase;
-            border-bottom: 1px solid #666;
-            padding-bottom: .25em;
-            margin-bottom: 1em;
-            font-family: $arvo;
+            
+            a {
+                text-decoration: none;
+                border-bottom: 1px solid #ccc;
+                color: $blue-dk;
+                
+                &:hover, &:focus {
+                    border-bottom: 1px solid $lime;
+                    color: $blk;
+                }
+            }
         }
     }
-}
-
-#design {
-    &:before { content: '#design'; }
-}
-#about {
-    &:before { content: '#about'; }
 }
 
 .section-title {
-    &:before {
-        font-family: "Arvo", serif;
-        font-size: 3em;
-        font-weight: 700;
-        transform: rotate(270deg);
-        position: absolute;
-        left: -1.75em;
-        top: 1.75em;
-        color: #efefef;
-    }
+
 }
 
 .text {
@@ -108,6 +273,71 @@ main {
         font-size: 2em;
         line-height: 1.5;
     }
+}
+
+.example {
+    @include flex-display;
+    @include flex-justify-around;
+    @include flex-items-center;
+    @include flex-direction-column;
+    
+    li {
+        a {
+            display: block;
+            
+            img {
+                display: block;
+                width: 100%;
+            }
+            
+            &:before {
+                content: '';
+                background-size: cover;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                transition: .25s;
+                opacity: 1;
+                left: 0;
+                top: 0;
+            }
+            
+            &#staffpunch {
+                position: relative;
+                
+                &:before {
+                    background-image: url('../img/overlay-staffpunch.png');
+                }
+            }
+            &#food-truck {
+                position: relative;
+                
+                &:before {
+                    background-image: url('../img/overlay-food-truck.png');
+                }
+            }
+        }
+    }
+    
+    @include breakpoint($small-break) {
+        @include flex-direction-row;
+        
+        li {
+            flex: 0 0 25%;
+            
+            a {
+                &:before {
+                    opacity: 0;
+                }
+                &:hover {
+                    &:before {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 #timeline {
@@ -147,6 +377,11 @@ main {
                     
                     > div {
                         padding: 0 1em;
+                        
+                        span {
+                            font-size: .8em;
+                            color: #fff;
+                        }
                         
                         h2 {
                             color: #fff;
@@ -189,6 +424,14 @@ main {
                         border-top: 1px solid #ccc;
                         margin-top: 1em;
                         padding-top: 1em;
+                        
+                        ul {
+                            li {
+                                button {
+                                    width: 80px;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -202,10 +445,8 @@ main {
         position: absolute;
         width: 1px;
         left: 0;
-        top: 0;
+        top: 20px;
     }
-    
-    &:before { content: '#timeline'; }
     
     @include breakpoint($mid-break) {
         margin-bottom: 10em;
@@ -252,6 +493,113 @@ main {
         &:after {
             content:'';
             left: 50%;
+        }
+    }
+}
+
+.list {
+    list-style-type: circle;
+    padding-left: 2em;
+    line-height: 1.5;
+}
+
+.side-by-side {
+    @include flex-display;
+    @include flex-justify-between;
+    @include flex-items-start;
+    @include flex-wrap;
+    padding: 2em 0;
+    
+    p {
+        line-height: 1.5;
+        margin: 0 0 1em;
+    }
+    
+    @include breakpoint($mid-break) {
+        .rt {
+            margin-left: 2em;
+        }
+        
+        p {
+            flex: 0 0 25%;
+        }
+        
+        .img-wrap {
+            margin: 0;
+            flex: 0 0 70%;
+        }
+    }
+}
+
+.img-wrap {
+    margin-top: 2em;
+    
+    img {
+        display: block;
+        width: 100%;
+    }
+}
+
+.dialog-pop {
+    @include flex-display;
+    @include flex-justify-center;
+    @include flex-items-center;
+    @include flex-wrap;
+    padding: 2em 0;
+    
+    li {
+        padding: .5em;
+        
+        button {
+            background-color: transparent;
+            margin: 0;
+            padding: 0;
+            border-radius: 5px;
+        }
+        
+        a {
+            display: block;
+        }
+        
+        button, a {
+            border: 2px solid transparent;
+            width: 120px;
+            
+            img {
+                display: block;
+                width: 100%;
+                border-radius: 5px;
+            }
+                
+            &:hover, &:focus {
+                cursor: pointer;
+                border: 2px solid $lime;
+                outline: 0;
+            }
+        }
+    }
+    
+    .foot & {
+        padding: 0;
+    }
+}
+
+.meta {
+    text-align: right;
+    h1 {
+        font-family: $arvo;
+        font-size: 3em;
+    }
+    span { 
+        display: block;
+        line-height: 1.25;
+    }
+}
+
+.proto {
+    li {
+        button {
+            width: 220px;
         }
     }
 }
@@ -326,6 +674,45 @@ footer {
     }
 }
 
+#design {
+    h3 {
+        text-align: right;
+        font-weight: 700;
+        border-bottom: 1px dotted $jet;
+    }
+    .list {
+        padding: 1em 2em;
+        
+        li {
+            a {
+                display: inline-block;
+                padding: .5em 0 0;
+                font-size: 1.25rem;
+                text-decoration: none;
+                border-bottom: 1px solid #ccc;
+                color: $blue-dk;
+                
+                &:hover, &:focus {
+                    border-bottom: 1px solid $lime;
+                    color: $blk;
+                }
+            }
+        }
+    }
+    
+    @include breakpoint($mid-break) {
+        .list {
+            @include flex-display;
+            @include flex-justify-between;
+            @include flex-items-center;
+            @include flex-wrap;
+            li {
+                flex: 1 0 50%;
+            }
+        }
+    }
+}
+
 #dialog {
     position: relative;
     padding-bottom: 56.25%; 
@@ -336,36 +723,6 @@ footer {
     padding: 1em;
     background: #fff;
     border-radius: 5px;
-}
-
-.dialog-pop {
-    @include flex-display;
-    @include flex-justify-center;
-    @include flex-items-center;
-    
-    li {
-        padding: .5em;
-        
-        button {
-            background-color: transparent;
-            border: 2px solid transparent;
-            width: 42px;
-            margin: 0;
-            padding: 0;
-            border-radius: 5px;
-            
-            img {
-                display: block;
-                width: 100%;
-                border-radius: 5px;
-            }
-                
-            &:hover, &:focus {
-                cursor: pointer;
-                border: 2px solid $lime;
-            }
-        }
-    }
 }
 
 .ui-widget-overlay {
@@ -400,7 +757,7 @@ footer {
             outline: 0;
             transition: .5s;
             
-            &:hover, &:focus {
+            &:hover {
                 cursor: pointer;
                 color: #c10;
             }
